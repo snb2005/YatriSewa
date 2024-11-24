@@ -1,0 +1,369 @@
+body {
+    background-color: #f5e9cc;
+    color:#a0522d;
+}
+@media(max-width:400px){
+    body{
+        padding-left:20px;
+        padding-right:20px;
+    }
+}
+h1 {
+    font-weight: bold;
+    font-size: 2.5rem;
+    
+}
+
+.title {
+    margin-top: 1rem;
+}
+
+
+.banner {
+    text-align: center;
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+.gallery {
+    padding-top: 1rem;
+}
+
+.highlighted-text {
+    font-weight: bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.dropdown {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+.container.gallery {
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 250px; /* Set a fixed height for all image containers */
+    overflow: hidden;
+    border-radius: 10px; /* Optional: keep the rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire box without stretching */
+    border-radius: 10px; /* Matches the border-radius of the wrapper */
+}
+
+
+.online-chat {
+    position: fixed;
+    top: 40%;
+    right: 0;
+    z-index: 1000;
+}
+
+.online-chat a {
+    background-color: #36b85c;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+
+    /* Adjust the banner padding and font size for smaller screens */
+    .banner {
+        padding: 1rem;
+    }
+
+    .banner h1,
+    .banner h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Adjust the gallery images to stack vertically on small screens */
+    .gallery .col-6,
+    .gallery .col-md-4 {
+        margin-bottom: 1rem;
+    }
+
+    .dropdown {
+        left: 5px;
+    }
+
+    .online-chat a {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* room booking */
+
+
+
+
+.info-box {
+    margin:auto;
+    padding: 2rem;
+    border: 1px solid #f9aa4b;
+    
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    width: 100%;
+    max-width: 1275px;
+    box-sizing: border-box;
+}
+
+.info-box div {
+    text-align: center;
+    flex: 1 1 20%; /* Allows the boxes to shrink and grow */
+    min-width: 150px; /* Ensures a minimum width for each box */
+    margin: 0.5rem 0;
+}
+
+.info-box div strong {
+    font-size: 1.5rem;
+}
+
+.book-btn {
+    background-color: #f9aa4b;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #e09a3a;
+}
+
+/* Media Queries for responsiveness */
+
+/* For devices with max-width of 1024px (Tablets) */
+@media (max-width: 1024px) {
+    .info-box {
+        flex-direction: column; /* Stack elements vertically */
+        text-align: center;
+    }
+
+    .info-box div {
+        width: 100%;
+        margin: 1rem 0;
+    }
+}
+
+/* For devices with max-width of 768px (Tablets/Phablets) */
+@media (max-width: 768px) {
+    
+
+    .info-box div {
+        font-size: 1.2rem;
+    }
+
+    .book-btn {
+        width: 100%;
+        padding: 0.75rem;
+    }
+}
+
+/* For devices with max-width of 480px (Mobile phones) */
+@media (max-width: 480px) {
+    .info-box div strong {
+        font-size: 1.2rem;
+    }
+
+    .book-btn {
+        font-size: 1rem;
+        padding: 0.5rem;
+        width: 100%;
+    }
+}
+/* Responsive box styling */
+/* Base styling for the box */
+/* Base styling for the box */
+.lbox {
+    padding: 2rem;
+    border-radius: 8px;
+    background: linear-gradient(to right, #a8e063, #f9ff3f, #fbd72b);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    margin:auto; /* Center alignment for larger screens */
+    width: 100%;
+    max-width:1275px; /* Ensure it doesn't exceed screen width */
+
+}
+
+
+/* Responsive for screens less than 768px */
+@media (max-width: 768px) {
+    .lbox {
+        max-width:600px;
+        padding: 1.5rem;
+        margin-left: auto;  /* Auto margins to center */
+        margin-right: auto; /* Auto margins to center */
+        width: 90%;         /* Ensure box takes up most of the screen */
+    }
+    .lbox h2 {
+        font-size: 1.5rem;
+    }
+    .lbox p {
+        font-size: 1rem;
+    }
+    
+    /* Flex column direction and center alignment */
+    .d-flex {
+        flex-direction: column;
+        align-items: center; /* Horizontally center */
+        justify-content: center; /* Vertically center */
+    }
+
+    /* Buttons will stack vertically */
+    .eb, .bb {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: auto; /* Ensure buttons don't stretch full width */
+    }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (max-width: 576px) {
+    .lbox {
+        padding: 1rem;
+        margin-left: auto; /* Auto margins to center */
+        margin-right: auto; /* Auto margins to center */
+        width: 95%;         /* Make sure it's almost full-width */
+    }
+    .lbox h2 {
+        font-size: 1.2rem;
+    }
+    .lbox p {
+        font-size: 0.9rem;
+    }
+
+    /* Same column alignment for very small devices */
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+
+.shadow-div {
+    transition: box-shadow 0.3s ease;
+}
+
+.shadow-div:hover {
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+.custom-div {
+    background-color: #fff; /* Example color */
+    border-radius: 10px; /* Soft border for smooth edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+    width: 100%;
+    max-width:1275px;
+    
+}
+
+/* Badge Styles */
+.feature-badge, .inclusion-badge, .exclusion-badge {
+
+    border:1px solid #f9aa4b;
+    font-size: 14px; 
+    padding: 8px 12px;
+    color:black;
+}
+
+/* Alignments */
+.d-flex {
+    display: flex;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.me-2{
+    margin-right: 10px;
+}
+.me-3 {
+    background-color:#c5ffcb;
+
+    margin-right: 10px; /* Adjust spacing between items */
+}
+.me-4{
+    margin-right: 10px;
+    background-color: #ffcdc5;
+}
+
+.mb-4, .mb-3, .my-5 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+/* Social Media Icons */
+.social-icon {
+    font-size: 30px;
+
+}
+
+.fa-square-whatsapp, .fa-square-facebook, .fa-envelope, .fa-print {
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.fa-square-whatsapp:hover, .fa-square-facebook:hover, .fa-envelope:hover, .fa-print:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Section Headings */
+.section-heading {
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+}
+
+/* Ensuring no overlap */
+.custom-div .badge {
+    margin-bottom: 10px;
+    text-align: left;
+}
+@media(max-width:944px){
+    .lbox,.info-box,.custom-div{
+        width:100%;
+        max-width:700px;
+    }
+}
+@media(max-width:682px){
+    .lbox,.info-box,.custom-div{
+        width:100%;
+        max-width:500px;
+    }
+}

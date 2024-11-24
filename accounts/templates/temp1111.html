@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost & Found Portal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center">Lost & Found Portal</h2>
+
+    <!-- Lost & Found Form -->
+    <form method="POST" class="mt-4 p-4 border rounded shadow-sm">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="description"><strong>Description:</strong></label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Describe the item" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="contact_info"><strong>Contact Info:</strong></label>
+            <input type="text" class="form-control" id="contact_info" name="contact_info" placeholder="Your contact details" required>
+        </div>
+        <div class="form-group">
+            <label for="status"><strong>Status:</strong></label>
+            <select class="form-control" id="status" name="status">
+                <option value="lost">Lost</option>
+                <option value="found">Found</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </form>
+
+    <!-- List of Lost & Found Items -->
+    <h3 class="text-center mt-5">List of Lost & Found Items</h3>
+    <ul class="list-group mt-3">
+        {% for item in items %}
+            <li class="list-group-item">
+                <p><strong>Status:</strong> {{ item.status | title }}</p>
+                <p><strong>Description:</strong> {{ item.description }}</p>
+                <p><strong>Contact:</strong> {{ item.contact_info }}</p>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-center">No items have been reported yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+models
+
+
+class LostFoundItem(models.Model):
+    title = models.CharField(max_length=200, default="")
+    description = models.TextField(default="")
+    location = models.CharField(max_length=200, default="")
+    date_lost = models.DateField(default="2023-01-01")  # Default to current date
+    contact_info = models.CharField(max_length=100, default="")
+
+class LostItem(models.Model):
+    title = models.CharField(max_length=100, default="")
+    description = models.TextField(default="")
+    location = models.CharField(max_length=100, default="")
+    date_lost = models.DateField(default="2023-01-01")  # Default to current date
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    contact_info = models.CharField(max_length=100, default="")
+    is_resolved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+class FoundItem(models.Model):
+    title = models.CharField(max_length=100, default="")
+    description = models.TextField(default="")
+    location = models.CharField(max_length=100, default="")
+    date_found = models.DateField(default="2023-01-01")  # Default to current date
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    contact_info = models.CharField(max_length=100, default="")
+    is_claimed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+
+
+urls 
+path('report-lost/', views.report_lost_item, name='report_lost_item'),
+    path('report-found/', views.report_found_item, name='report_found_item'),
+    path('lost-items/', views.lost_items_list, name='lost_items_list'),
+    path('found-items/', views.found_items_list, name='found_items_list'),
+    
+
+
+
+views def report_lost_item(request):
+if request.method == 'POST':
+    form = LostItemForm(request.POST)
+    if form.is_valid():
+        lost_item = form.save(commit=False)
+        lost_item.user = request.user
+        lost_item.save()
+        return redirect('lost_items_list')
+else:
+    form = LostItemForm()
+return render(request, 'lost_and_found/report_lost_item.html', {'form': form})
+
+def report_found_item(request):
+if request.method == 'POST':
+    form = FoundItemForm(request.POST)
+    if form.is_valid():
+        found_item = form.save(commit=False)
+        found_item.user = request.user
+        found_item.save()
+        return redirect('found_items_list')
+else:
+    form = FoundItemForm()
+return render(request, 'lost_and_found/report_found_item.html', {'form': form})
+
+def lost_items_list(request):
+lost_items = LostItem.objects.filter(is_resolved=False)
+return render(request, 'lost_and_found/lost_items_list.html', {'lost_items': lost_items})
+
+def found_items_list(request):
+found_items = FoundItem.objects.filter(is_claimed=False)
+return render(request, 'lost_and_found/found_items_list.html', {'found_items': found_items})
+
+
+def lost_and_found(request):
+if request.method == 'POST':
+    status = request.POST.get('status')
+    description = request.POST.get('description')
+    contact_info = request.POST.get('contact_info')
+
+    # Select the appropriate form based on status
+    if status == 'lost':
+        form = LostItemForm(request.POST)
+    else:
+        form = FoundItemForm(request.POST)
+
+    if form.is_valid():
+        item = form.save(commit=False)
+        item.user = request.user
+        item.save()
+
+        # Add a message for the admin
+        messages.success(
+            request,
+            f"A new {status} item has been reported: '{description}'. Please review in the admin panel."
+        )
+
+        # Redirect to the appropriate list view
+        return redirect('lost_items_list' if status == 'lost' else 'found_items_list')
+
+# Render the form and items list
+return render(request, 'lost_and_found.html')

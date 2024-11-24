@@ -1,0 +1,723 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumbh Mela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <style>
+        /* style.css */
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .bg-light {
+            background-color: transparent !important;
+        }
+
+        
+
+        
+        .navbar-nav a {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .navbar-light .navbar-brand {
+            color: #fff;
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .navbar-light .navbar-brand:focus,
+        .navbar-light .navbar-brand:hover {
+            color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link:focus,
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        .w-100 {
+            height: 100vh;
+        }
+
+        .navbar-toggler {
+            padding: 1px 5px;
+            font-size: 18px;
+            line-height: 0.3;
+            background: #fff;
+        }
+
+        /* media.css */
+        @media only screen and (max-width: 767px) {
+            .navbar-nav {
+                text-align: center;
+                background: rgba(0, 0, 0, 0.5);
+            }
+
+           
+            
+        }
+        #hero-section {
+            background-image: url("{% static 'images/main4.jpg' %}"); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh; /* Full-screen height */
+            position: relative;
+            z-index: 1;
+        }
+        
+        #hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Optional: Adds a dark overlay */
+            z-index: -1;
+        }
+        
+        #hero-section h1 {
+            font-size: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        
+        #hero-section p {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .accordion{
+            max-width: 1000px !important;
+            margin: 50px auto;
+            box-shadow: 0 2px 25px 0 rgba(110, 130, 208, .18) !important;
+        }
+        
+        .accordion-button{
+            border :1px solid #ffdd7d;
+            
+            
+            position: relative;
+            box-shadow: none !important;
+        }
+        
+        .accordion-button:active, .accordion-button:focus{
+            border: none !important;
+        }
+        
+        .accordion-button:hover{
+            background: #25aca3 !important;
+        }
+        
+        .accordion-button::after{
+            content: "";
+            background: #fff;
+            transform: scale(1.2);
+            border-radius: 3px;
+            transition: .5s !important;
+        }
+        /* General Styling for the Page */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #e0f7fa, #ffecb3); /* Light gradient background */
+            color: #3e2723; /* Deep brown for text for a warm feel */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        /* Decorative Section Dividers */
+        .section-divider {
+            margin: 40px 0;
+            height: 2px;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff6f61,
+                #ff6f61 10px,
+                #ffb74d 10px,
+                #ffb74d 20px
+            ); /* Striped gradient divider */
+        }
+        
+        /* Elegant Heading Styling */
+        .theme-heading {
+            font-size: 2.5rem;
+            padding: 20px 5%; /* Responsive padding */
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 8px;
+            letter-spacing: 1.5px;
+            background-color: #ff6f61; /* Coral color */
+            color: #ffffff; /* White text for contrast */
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Light Theme Heading */
+        .light-theme .theme-heading {
+            background-color: #ff6f61; /* Coral */
+            color: #ffffff; /* White text */
+        }
+        
+        /* Dark Theme Heading */
+        .dark-theme .theme-heading {
+            background-color: #ff5722; /* Bright orange */
+            color: #ffffff; /* White text for contrast */
+        }
+        
+        /* Add background accent shapes */
+        .accordion-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -10%; /* Responsive positioning */
+            left: -10%;
+            width: 30vw; /* Use viewport width */
+            height: 30vw; /* Maintain aspect ratio */
+            max-width: 300px; /* Max size */
+            background-color: rgba(255, 107, 107, 0.2); /* Light Coral Circle */
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .accordion-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: -10%; /* Responsive positioning */
+            right: -10%;
+            width: 20vw; /* Use viewport width */
+            height: 20vw; /* Maintain aspect ratio */
+            max-width: 200px; /* Max size */
+            background-color: rgba(255, 193, 7, 0.2); /* Light Golden Circle */
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        /* Accordion Wrapper Styling */
+        .accordion-wrapper {
+            position: relative;
+            padding: 5%; /* Responsive padding */
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: #fff9c4; /* Light yellow for the wrapper */
+            max-width: 80%; /* Decreased width for better fit */
+            margin: 60px auto; /* Center the accordion wrapper */
+            transition: background-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        /* Light Theme Accordion Wrapper */
+        .light-theme .accordion-wrapper {
+            background-color: #ffffff; /* White background */
+        }
+        
+        /* Dark Theme Accordion Wrapper */
+        .dark-theme .accordion-wrapper {
+            background-color: #ffe0b2; /* Light peach for dark theme */
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Accordion Item Styling */
+        .accordion-item {
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            max-width: 100%; /* Ensures items fit within the wrapper */
+        }
+        
+        /* Accordion Body Styling */
+        .accordion-body {
+            padding: 15px;
+            transition: all 0.5s ease;
+            background-color: #ffffff; /* Neutral background for body */
+            color: #3e2723; /* Deep brown text */
+        }
+        
+        /* Background Accent Shapes */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: -20%;
+            width: 50vw; /* Use viewport width */
+            height: 50vw; /* Maintain aspect ratio */
+            max-width: 500px; /* Max size */
+            background-color: rgba(255, 193, 7, 0.2); /* Soft golden accent */
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -10%;
+            left: -20%;
+            width: 40vw; /* Use viewport width */
+            height: 40vw; /* Maintain aspect ratio */
+            max-width: 400px; /* Max size */
+            background-color: rgba(255, 107, 107, 0.2); /* Soft coral accent */
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        /* Toggle Button Styling */
+        .toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6f61; /* Coral color for the button */
+            color: #ffffff; /* White text */
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .toggle-button:hover {
+            background-color: #ff8a65; /* Light coral on hover */
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .theme-heading {
+                font-size: 2rem; /* Smaller heading on smaller screens */
+            }
+        
+            .accordion-wrapper {
+                margin: 30px 5%; /* Reduce margin on smaller screens */
+                max-width: 90%; /* Wider on smaller screens */
+            }
+        
+            .toggle-button {
+                padding: 10px 20px; /* Smaller button */
+                font-size: 16px; /* Smaller font */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .theme-heading {
+                font-size: 1.5rem; /* Further reduce heading size */
+            }
+        
+            .accordion-body {
+                padding: 10px; /* Less padding for smaller devices */
+            }
+        }
+        nav.navbar {
+            background-color: #212121;
+        }
+
+        nav.navbar .navbar-brand {
+            color: #ff6f61;
+            font-weight: 700;
+        }
+
+        nav.navbar .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        nav.navbar .navbar-nav .nav-link:hover {
+            color: #ff6f61;
+        }
+        
+
+
+
+
+    
+
+
+    </style>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+
+</head>
+
+<body class="light-theme">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-light  fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Kumbh Mela</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/index/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/shahisnan/">FAQs</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/accommodations/">Accommodations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/tours/">Tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/reviews/">Reviews</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="emergencyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Emergency Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="emergencyDropdown">
+                            <li><a class="dropdown-item" href="http://127.0.0.1:8000/accounts/sos/">SOS</a></li>
+                            <li><a class="dropdown-item" href="{% url 'emergency_announcements' %}">Emergency Announcements</a></li>
+                            <li><a class="dropdown-item" href="http://127.0.0.1:8000/accounts/lost-found/">Lost & Found</a></li>
+                            <li><a class="dropdown-item" href="http://127.0.0.1:8000/accounts/contacts/">Emergency Contacts</a></li>
+                        </ul>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}">
+                        <img src="{% static 'images/user_icon.png' %}" alt="User Profile" style="height: 40px; width: 40px;">
+                    </a>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+
+                        
+                        
+                    {% endif %}
+                    
+                    
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <br>
+    <section id="hero-section" class="d-flex align-items-center">
+        <div class="container text-center text-white">
+            <h1 class="animated fadeInDown">Welcome to Kumbh Mela</h1>
+            <p class="lead">Experience the world’s largest spiritual gathering</p>
+        </div>
+    </section>
+    <button class="toggle-button" onclick="toggleTheme()">Toggle Theme</button>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('light-theme');
+            body.classList.toggle('dark-theme');
+        }
+    </script>
+
+
+        <h1 class="theme-heading">Frequently Asked Questions</h1>
+        <div class="accordion-wrapper">
+            <div class="accordion " id="accordionExample">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> What are the
+                            important dates for Prayagraj Mahakumbh mela 2025?</button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>The following are the four crucial dates for Kumbh Mela 2025:</strong>
+                            <ul>
+                                <li>Paush Purnima on 13th January 2025 (Festival starting date)</li>
+                                <li>Makar Sankranti on 14th January 2025</li>
+                                <li>Mauni Amavasya on 29th January 2025</li>
+                                <li>Basant Panchmi on 3rd February 2025</li>
+                                <li>Maghi Purnima on 12 February 2025</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> What yajnas and
+                            kirtans are done during Kumbh Mela?</button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            The pilgrims proceed to the temples, where the priests conduct the yajnas after taking a dip in the
+                            holy river. Crowds swarm the stage when Brahmins or priests kindle a sacred fire. The priests begin
+                            mouthing Sanskrit mantras to worship and ask for the blessings of the All-Powerful after making
+                            offerings to Agni, the holy god of fire. The gods and their followers are supposed to be connected
+                            spiritually through yajnas.
+
+                            Kirtans are another type of spiritual recitation. Priests perform musical rituals and chant hymns of
+                            adoration that tell the folklore and traditions associated with their gods. While playing classical
+                            instruments like the harmonium, veena, sitar (a string instrument), tablas (single drums), flute,
+                            and cymbals, musicians sing along with the audience.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree"> What are
+                            Pravachan and how can I attend them?</button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        The teachings of the Holy Scriptures and the ancient Vedic scriptures are preached by monks, saints, and
+                        religious academics. The recitation and conversations are referred to as Pravachan, whereas this social
+                        gathering is known as Satsang. Huge groups of pilgrims gather in tents while the saints read important
+                        parts from the holy books.
+
+                        They describe the significance of these legends in Hinduism, their meanings, and how one can use their
+                        lessons to live a serene life. Hindu mythology is written throughout major works like the Mahabharata
+                        and Ramayana, as well as in the Vedas and Bhagavata Purana. These lessons provide profound information.
+
+                        You can attend those just by yourself as you go exploring the Mela, you’ll find many people gathered
+                        under a tent and a sage speaking on a stage.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour"> How to reach Kumbh
+                            Mela 2025?</button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            The Kumbh Mela 2025 is scheduled to take place in Prayagraj, which is in the Indian state of Uttar
+                            Pradesh. From the major Indian cities, Prayagraj is well connected by air, road, and rail. To get to
+                            Prayagraj City, where taxis are available for hire, travellers can take direct flights or trains. To
+                            get to Triveni Sangam Ghat or the Mela ground, use local transportation or buses run by the
+                            government.
+
+
+
+                            Prayagraj can be reached in two hours by car from Varanasi, which is the second closest city and has
+                            direct access to all major railway stations, roads, and an international airport. Just 120 km
+                            separate Varanasi from Prayagraj by road.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">What are the
+                            special attractions at the Kumbh Mela?</button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            The Kumbh Mela is the type of event that is difficult to express in words. This is a festival with
+                            many attractions, significant occasions, rites, and spiritual ascents to god. But when we discuss
+                            the main draws of this fire, we focus on a few key points.
+
+                            Naga Sadhu: The foundation of this event is the Naga Sadhu. Nagas are difficult to locate in India
+                            because they mostly lived in the Himalayas or locations with thick forests. They perform live at
+                            this fair among the general public as the event’s star attraction. The best draw for pilgrims and
+                            tourists from all over the world is always the naked body covered in ash, the long hairstyles, and
+                            the technique of armouring.
+
+                            Bathing at Triveni Sangam: This major event’s focal point is Triveni Sangam, where devotees take a
+                            sacred bath in the meeting place of three rivers.
+
+                            “Kinnar Akhara“: This women’s Akhara was held for the first time at the preceding 2019 Kumbh Mela in
+                            Prayagraj. For the first time, women were treated with the same respect and took part in the event
+                            alongside their supporters during a male-dominated event.
+
+                            It is an uncommon experience for pilgrims and devotees to interact with the lady priest and saints
+                            for the first time. The same thing will occur in 2025 at the next Kumbh Mela when they arrive in
+                            large groups and pilgrims ask for their blessings.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">What is the role of
+                            the Government in Kumbh Mela?</button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            This greatest human gathering fair in Prayagraj is organised in major part by the state government
+                            of Uttar Pradesh. The central government’s function is crucial for maintaining the large crowd.
+
+                            The national and state governments are required to launch special trains, aircraft, roads, and
+                            pantoon bridges, adorn the Mela grounds, construct bio-toilets, build tent cities, set up food
+                            stalls, etc. Deploying administration, police, river police, Rapid action force, and other
+                            facilities, etc., is the biggest endeavour. The government must build numerous emergency medical
+                            facilities. Centers for lost and found items, plans for bathing dates, etc.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">What are the
+                            options for luxury accommodation at Kumbh Mela?</button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            The hospitality industry is fully prepared to entertain the tourists and pilgrims by giving them
+                            top-notch luxury accommodations during their stay, so the Kumbh Mela 2025 exceeded the expectations
+                            of devotees. Many hospitality-related businesses with experience organising the Kumbh Mela in the
+                            year 2025 intend to build a temporary tent city along the Ganges River.
+
+                            View our Accommodation options here
+
+                            The bus stop and the auspicious Sangam ghat are both nearby this tent city. To give visitors a
+                            special and comfortable stay, the hotel will upgrade the facilities. There are many comforts in the
+                            tents, such as Western toilets, a music system, a tea and coffee maker, newspapers, and mosquito
+                            repellent.
+
+                            These facilities are intended to be part of the campus, which includes a parking, dining halls,
+                            lounges, meditation halls, and gardens. Additionally, they add some new flavours to their offerings,
+                            such as private boats for the Triveni Sangam, butler services, and doctors on call.
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">Can I get a
+                            darshan (interaction) of the sages at the Kumbh Mela?</button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            For individuals who want to closely study the practises of Sadhus, or orthodox religious devotees,
+                            the Kumbh Mela is an incredible opportunity. The Sanskrit word for “seeing” is darshan. The
+                            interaction between the Sadhus and the general populace is what it is.
+
+                            These sadhus, who follow several Hindu deities, travel continuously for days and are distinguished
+                            members of various akharas, or religious sects. They do snan by the river after arriving at Kumbh
+                            Mela and subsequently, stay in their tents. Sadhus live a simple lifestyle. They live their lives in
+                            the service of their All-Powerful and are devoid of materialistic aspirations. Because of this, the
+                            pilgrims are very interested in talking to these gurus to get spiritual advice and understanding.
+
+                            Darshan, or private conversations with these devoted followers, is an unforgettable experience. The
+                            sessions are closely watched by the authorities to make sure that nothing happens that could make
+                            the sadhus angry or hurt their religious feelings.
+                        </div>
+                    </div>
+                </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingNine">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">What are the
+                                things I can buy at Kumbh Mela?</button>
+                        </h2>
+                        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Many artists, artisans, and book dealers are travelling from all around India to attend this
+                                significant spiritual festival. This gathering features a large collection of spiritual
+                                literature, calendars, relics, and sermons by saints and priests. You can purchase holy tunes
+                                and videos on audio and video cassettes in a variety of languages. Kids’ toys made of plastic
+                                and natural materials are readily accessible.
+
+                                You can purchase items like bracelets, lockets, bangles, and colourful ribbons here. Traditional
+                                clothing, some of which have been carefully adorned with images of deities.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTen">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTen" aria-expanded="true" aria-controls="collapseTen">How to find
+                                correct route at Maha Kumbh Mela 2025?</button>
+                        </h2>
+                        <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                The government created a large number of plans to make the Kumbh Mela easier for the
+                                international pilgrims. The majority of people struggle to locate the right route to get to
+                                their destination because this fair is spread out over a large area of about 40 kilometres. The
+                                government creates a tonne of display boards and signage to mark the right path, making the
+                                visit simpler. However, we are going to provide you with some tips that can help you find things
+                                more quickly in the mela grounds.
+
+                                Always keeping in mind the number marking of pantoon bridges is the best approach to choosing
+                                the optimal path. The fair administration constructed numerous temporary bridges so that
+                                visitors could easily cross the river and go to the mela area. It is best to remember the number
+                                marking of the pantoon bridge to your destination because there are many of them and they all
+                                look the same.
+
+                                Gather the Mela ground map which will be made available on this website as well on the official
+                                kumbh mela website, which you can readily receive from any assistance desk, to find the
+                                locations of the akharas and camps.
+
+                                Keep in mind the stall or shop number where you shop or have a meal. As a result, you may easily
+                                return to these stores.
+
+                                Write down the phone numbers of any contact centres you find with a large number of cops
+                                available to assist you at any time during the event.
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        
+        </div>   
+        
+    </div>   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

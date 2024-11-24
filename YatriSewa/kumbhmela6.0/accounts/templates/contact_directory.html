@@ -1,0 +1,13 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<div class="container">
+    <h2>Emergency Contact Directory</h2>
+    <div class="list-group">
+        {% for contact in contacts %}
+            <div class="list-group-item">
+                <h5>{{ contact.service_name }} - <small>{{ contact.category }}</small></h5>
+                <p>Phone: {{ contact.phone_number }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>

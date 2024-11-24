@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore the interactive Halloween Party project, showcasing responsive design, animations, and web development techniques. Immerse yourself in the spooky ambiance of Halloween.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo.png">
+
+    <!-- Page Title -->
+    <title>Kumbh Mela</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Open Graph meta tags for image sharing -->
+    <meta property="og:title" content="Parallax Scroll Site">
+    <meta property="og:description"
+        content="Explore the interactive Halloween Party project and Immerse yourself in the spooky ambiance of Halloween.">
+    <meta property="og:image" content="https://drive.google.com/uc?id=1GFbBHTi7w8weRVqLJ7bkofezEEGg4U30">
+    <meta property="og:type" content=”website” />
+    <!-- <meta property="og:url" content="https://parallax-website-by-vineet.netlify.app/"> -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animation.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- This is the header/ Nav Bar -->
+    <header id="header">
+
+    </header>
+
+    <!-- This is the Top Section (Above Water) -->
+    <section>
+        
+        <img src="{% static 'images/land/sky.png' %}" id="sky" class="wallpaper">
+        <img src="{% static 'images/land/sun.png' %}" id="sun" >
+        <img src="{% static 'images/land/mountains.png' %}" id="mountains" class="wallpaper">
+        <img src="{% static 'images/land/cloud.png' %}" id="cloud">
+        
+        <h2 id="text"><span>"Embrace the Thrill of"</span><br>Kumbh Mela</h2>
+        <img src="{% static 'images/land/forest.png' %}" id="forest">
+        <img src="{% static 'images/land/bird1.png' %}"id="bird1" >
+        <img src="{% static 'images/land/bird2.png' %}" id="bird2" >
+        
+        <a href="http://127.0.0.1:8000/accounts/index/" id="explore">Explore Now</a>
+        <img src="{% static 'images/land/rocks.png' %}" id="rocks">
+        <img src="{% static 'images/land/splash.png' %}" id="splash" >
+        <img src="{% static 'images/land/water.png' %}" id="water">
+        
+    </section>
+
+    <!-- This is the Middle Section (Below Water) which has content -->
+    <div class="sec" id="sec">
+
+        <!-- Importing sea background images (on top.. so that it hides behind glass content) -->
+        <img src="{% static 'images/sea/sea1.png' %}" id="sea1" class="undersea">
+        <img src="{% static 'images/sea/sea2.png' %}" id="sea2" class="undersea">
+        <img src="{% static 'images/sea/sea3.png' %}" id="sea3" class="undersea">
+        <img src="{% static 'images/sea/sea4.png' %}" id="sea4" class="undersea">
+        <img src="{% static 'images/sea/sea5.png' %}" id="sea5" class="undersea">
+        <img src="{% static 'images/sea/sea6.png' %}" id="sea6" class="undersea">
+        <img src="{% static 'images/sea/sea7.png' %}" id="sea7" class="undersea">
+        <img src="{% static 'images/sea/sea8.png' %}" id="sea8" class="undersea">
+        
+
+        
+
+
+        
+
+        <br>
+
+        <div class="glass">
+            <h3>Kumbh Mela</h3>
+            <p>
+                The Maha Kumbh Mela is one of the most important and grand religious events in Hinduism, celebrated every 12 years at four sacred river locations: Prayagraj (at the confluence of the Ganges, Yamuna, and mythical Saraswati rivers), Haridwar (on the Ganges), Ujjain (on the Shipra), and Nashik (on the Godavari). It attracts millions of pilgrims, sadhus (holy men), saints, and visitors from around the world, who gather to take a ritualistic dip in the holy rivers. This act of bathing is believed to purify the soul, absolve sins, and bring spiritual salvation (moksha). The Kumbh Mela is steeped in mythology, with roots in the story of the cosmic battle between gods and demons for a pot of amrit (nectar of immortality), during which drops of nectar fell on these locations, making them spiritually charged. The Maha Kumbh Mela is a profound expression of faith, devotion, and India’s vibrant spiritual heritage, with various rituals, religious discourses, and cultural activities taking place over several weeks. It also features the participation of Naga Sadhus, known for their renunciation and unique practices, making it a deeply transformative experience for participants.
+
+
+
+
+
+
+
+            </p>
+        </div>
+
+        <br>
+
+        <div class="glass">
+            <h3>How it is celebrated</h3>
+            <p>The Maha Kumbh Mela is celebrated with deep devotion and elaborate rituals over several weeks. Millions of pilgrims gather at one of the four sacred locations—Prayagraj, Haridwar, Ujjain, or Nashik—to take a holy dip in the rivers, believed to cleanse them of sins and bring spiritual purification. The event features grand processions of Naga Sadhus, ascetics who lead the Shahi Snan (royal bath), marking the most auspicious days for bathing. Alongside the ritual bathing, religious discourses and sermons are held, with saints and spiritual leaders offering teachings and guidance. Camps, known as akharas, are set up by various sects where ascetics perform rituals, meditation, and engage with devotees. The Kumbh Mela also includes cultural performances that celebrate Hindu traditions through music, dance, and theater. The pilgrimage itself is considered an act of devotion, and many participants engage in charitable activities by giving alms to the poor. The celebration fosters a sense of spiritual fellowship, as millions of people come together in this extraordinary event of faith and cultural unity.</p>
+        </div>
+
+        <br>
+
+        <div class="glass">
+            <h3>
+                Why is Kumbh mela celebrated??
+            </h3>
+            <p>
+                The Kumbh Mela is celebrated as a significant spiritual gathering rooted in Hindu mythology and religious traditions. According to ancient beliefs, the festival commemorates the cosmic battle between the gods (Devas) and demons (Asuras) over the nectar of immortality, known as "Amrit." During this battle, a few drops of the nectar spilled at four sacred locations—Prayagraj, Haridwar, Ujjain, and Nashik. These places are considered spiritually charged, and it is believed that taking a dip in the holy rivers during the Kumbh Mela helps cleanse sins and attain salvation (moksha).
+
+                The festival is also a time for spiritual renewal, meditation, and seeking blessings from saints and ascetics, making it a pilgrimage for millions seeking divine connection, purification, and liberation. It is celebrated every 12 years at each of the four locations, aligning with specific astrological positions, further adding to its religious significance.
+            </p>
+        </div>
+
+        <!-- Importing fish and seabed images -->
+        
+        <img src="{% static 'images/sea/fish1.png' %}"id="fish1" class="fishes" >
+        <img src="{% static 'images/sea/fish2.png' %}" id="fish2" class="fishes">
+        <img src="{% static 'images/sea/fish3.png' %}" id="fish3" class="fishes">
+        <img src="{% static 'images/sea/fish4.png' %}" id="fish4" class="fishes">
+        <img src="{% static 'images/sea/oceanbed.png' %}" id="seabed" class="fishes">
+        
+        
+
+        <!-- Container for the bubble animation -->
+        <div class="bubbles">
+            <img src="{% static 'images/sea/bubble.png' %}">
+            <img src="{% static 'images/sea/bubble.png' %}">
+            <img src="{% static 'images/sea/bubble.png' %}">
+            <img src="{% static 'images/sea/bubble.png' %}">
+            <img src="{% static 'images/sea/bubble.png' %}">
+            <img src="{% static 'images/sea/bubble.png' %}">
+            <img src="{% static 'images/sea/bubble.png' %}">
+            
+        </div>
+    </div>
+
+    <!-- Code for the footer -->
+    
+    
+    
+
+    <!-- The button to scroll back to top -->
+    <a id="top" href="#"> <i class="fas fa-arrow-up"></i> </a>
+</body>
+
+<!-- Always include javascript at end of file...just above html tag -->
+<script src="{% static 'js/action.js' %}"></script>
+
+</html>

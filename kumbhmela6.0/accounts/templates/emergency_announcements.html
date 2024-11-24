@@ -1,0 +1,79 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+    /* Apply consistent font */
+    * {
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    /* Container Styling */
+    .container {
+        max-width: 900px;
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #fff9c4; /* Light yellow */
+        border-radius: 10px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Heading Styling */
+    h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        color: #ff6f61; /* Coral color */
+        margin-bottom: 20px;
+    }
+
+    /* List Group Item Styling */
+    .list-group-item {
+        background-color: #ffffff;
+        border: 1px solid #ffdd7d;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        padding: 20px;
+        transition: all 0.3s ease;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Item Hover Effect */
+    .list-group-item:hover {
+        background-color: #ffecb3;
+        border-color: #ff6f61;
+    }
+
+    /* Announcement Title Styling */
+    h4 {
+        font-size: 1.8rem;
+        color: #3e2723; /* Deep brown */
+        margin-bottom: 8px;
+    }
+
+    /* Description Text Styling */
+    p {
+        font-size: 1rem;
+        color: #5d4037; /* Brown for readability */
+    }
+
+    /* Date Posted Styling */
+    .text-muted {
+        font-size: 0.9rem;
+        color: #a1887f; /* Muted brown */
+    }
+</style>
+
+<div class="container">
+    <h2>Emergency Announcements</h2>
+    <div class="list-group">
+        {% for announcement in announcements %}
+            <div class="list-group-item">
+                <h4>{{ announcement.title }}</h4>
+                <p>{{ announcement.description }}</p>
+                <small class="text-muted">Posted on: {{ announcement.date_posted|date:"F j, Y, g:i a" }}</small>
+            </div>
+        {% empty %}
+            <p>No active emergency announcements at the moment.</p>
+        {% endfor %}
+    </div>
+</div>

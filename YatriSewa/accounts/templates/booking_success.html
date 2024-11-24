@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Success</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS CDN -->
+</head>
+<body class="bg-gradient-to-br from-teal-100 to-yellow-200 text-gray-800 flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-lg shadow-xl max-w-lg w-full text-center p-8">
+        <h1 class="text-4xl font-bold text-orange-500 mb-4">Booking Successful!</h1>
+        <p class="text-lg text-gray-700 mb-6">Thank you for your booking. Your payment has been processed successfully.</p>
+        <a href="{% url 'accommodations' %}" class="inline-block bg-teal-500 text-white py-3 px-6 rounded-full text-lg font-semibold shadow-md transition transform hover:scale-105 hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50">
+            Go back to accommodations
+        </a>
+    </div>
+</body>
+</html>

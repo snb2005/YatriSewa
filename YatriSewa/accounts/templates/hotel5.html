@@ -1,0 +1,388 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumbh Mela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* style.css */
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .bg-light {
+            background-color: transparent !important;
+        }
+
+        .carousel-item {
+
+            min-height: 300px;
+        }
+
+        .carousel-caption {
+            bottom: 220px;
+        }
+
+        .carousel-caption h5 {
+            font-size: 45px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 25px;
+        }
+
+        .carousel-caption p {
+            width: 60%;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        .carousel-caption a {
+            text-transform: uppercase;
+            text-decoration: none;
+            background: darkorange;
+            padding: 10px 30px;
+            display: inline-block;
+            color: #000;
+            margin-top: 15px;
+        }
+
+        .navbar-nav a {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .navbar-light .navbar-brand {
+            color: #fff;
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .navbar-light .navbar-brand:focus,
+        .navbar-light .navbar-brand:hover {
+            color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link:focus,
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        .w-100 {
+            height: 100vh;
+        }
+
+        .navbar-toggler {
+            padding: 1px 5px;
+            font-size: 18px;
+            line-height: 0.3;
+            background: #fff;
+        }
+
+        /* media.css */
+        @media only screen and (max-width: 767px) {
+            .navbar-nav {
+                text-align: center;
+                background: rgba(0, 0, 0, 0.5);
+            }
+
+            .carousel-caption {
+                bottom: 165px;
+            }
+
+            .carousel-caption h5 {
+                font-size: 17px;
+            }
+
+            .carousel-caption a {
+                padding: 10px 15px;
+                font-size: 15px;
+            }
+        }
+        h1,h3{
+            color:#a0522d;
+        }
+    </style>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+    <link href="{% static 'css/f.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-light  fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Kumbh Mela</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/index/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/shahisnan/">Shahisnan</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/accommodations/">Accommodations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/tours/">Tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/experiences/">Experiences</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}">
+                        <img src="{% static 'images/user_icon.png' %}" alt="User Profile" style="height: 40px; width: 40px;">
+                    </a>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+
+                        
+                        
+                    {% endif %}
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    
+    <div class="container title">
+        <h1>Cosy Homestay at Kumbh Mela Prayagraj 2025 |<br> Budget Stay at Kumbh Mela 2025</h1>
+    </div>
+
+    <!-- Image Gallery -->
+    <div class="container gallery">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            <!-- First set of images -->
+            <div class="col">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/cosy1.webp' %}" class="img-fluid rounded" alt="Lamp">
+                </div>
+            </div>
+            <div class="col">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/cosy2.webp' %}" class="img-fluid rounded" alt="Bed with mosquito net">
+                </div>
+            </div>
+            <div class="col">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/cosy3.webp' %}" class="img-fluid rounded" alt="Another bed view">
+                </div>
+            </div>
+
+            <!-- Second set of images -->
+            <div class="col">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/cosy4.webp' %}" class="img-fluid rounded" alt="Chairs and table">
+                </div>
+            </div>
+            <div class="col">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/cosy5.webp' %}"class="img-fluid rounded" alt="Decorative painting">
+                </div>
+            </div>
+            <div class="col">
+                <div class="image-wrapper">
+                    <img src="{% static 'images/cosy6.webp' %}"class="img-fluid rounded" alt="Decorative painting">
+                </div>
+            </div>
+            
+
+            
+        </div>
+    </div>
+    <div class="container text-center my-5 p-4 shadow-div lbox" style="background: linear-gradient(to right, #a8e063, #f9ff3f, #fbd72b); border-radius: 8px;">
+        <h2 style="font-weight: bold;">Limited Camps Available!</h2>
+        <p>Enquire or Book below–</p>
+        <div class="d-flex justify-content-center">
+            <a href="#" class="btn btn-dark eb" style="padding: 10px 20px; font-weight: bold;margin-right:10px;">Enquire! ➔</a>
+            {% if user.is_authenticated %}
+                <a href="http://127.0.0.1:8000/accounts/accommodations/5/book/" class="btn btn-dark bb" style="padding: 10px 20px; font-weight: bold;">Book Now</a>
+            {% else %}
+                <a href="{% url 'login' %}?next=http://127.0.0.1:8000/accounts/accommodations/5/book/" class="btn btn-dark bb" style="padding: 10px 20px; font-weight: bold;">Book Now</a>
+            {% endif %}
+        </div>
+    </div>
+    
+    
+
+    <!-- Dropdown language selection -->
+    <div class="dropdown">
+        <select class="form-select" aria-label="Language select">
+            <option value="english" selected>English</option>
+            <option value="hindi">Hindi</option>
+        </select>
+    </div>
+
+    <!-- Online Chat Button -->
+    <div class="online-chat">
+        <a href="#">Online</a>
+    </div>
+
+
+    <!-- Info Section -->
+    <div class="container-i">
+        <div class="info-box">
+            <div>
+                <p>Occupancy</p>
+                <strong>-</strong>
+            </div>
+            <div>
+                <p>Dining</p>
+                <strong>Available</strong>
+            </div>
+            <div>
+                <p>Room Service</p>
+                <strong>Available</strong>
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                <a href="http://127.0.0.1:8000/accounts/accommodations/5/book/" class="btn book-btn" >Book Now <i class="bi bi-arrow-right"></i></a>
+            {% else %}
+                <a href="{% url 'login' %}?next=http://127.0.0.1:8000/accounts/accommodations/5/book/" class="btn book-btn" >Book Now <i class="bi bi-arrow-right"></i></a>
+            {% endif %}
+    
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <header>
+            <h1>Discover Comfort and Privacy with Our Cosy Homestay at Kumbh Mela Prayagraj 2025</h1>
+        </header>
+        <section>
+            <p>Experience the spiritual grandeur of Kumbh Mela 2025 in Prayagraj while enjoying the comforts of a home. Our Cosy Homestay offers an affordable yet intimate stay, blending the <span style="color:#ce4474"> essence of this sacred event</span> with the warmth and privacy of a fully furnished 2BHK flat.</p>
+            <h3>Accommodation Details</h3>
+            <p>Our Deluxe Camps are crafted with exceptional attention to detail, ensuring comfort and functionality. Each eco-friendly, waterproof, and fully secured camp offers a private space to relax and rejuvenate after a day of spiritual exploration. Nestled close to the main bathing ghats, these cottages provide breathtaking river views, enhancing your Kumbh Mela experience with a majestic natural backdrop.</p>
+        </section>
+        <section>
+            <h3>Room Amenities:</h3>
+            <ul>
+                <li>Queen bed with plush pillows, a comfortable mattress, and a warm comforter for restful nights</li>
+                <li>Two side tables for convenience</li>
+                <li>A coffee table with two chairs for relaxing moments</li>
+                <li>A luggage rack for added convenience</li>
+                <li>Lamp shades to create a cozy atmosphere</li>
+                <li>Complimentary water bottles, glasses, and a wooden tray</li>
+                <li>Tea and coffee maker for your morning refreshment</li>
+                <li>Daily newspaper for keeping up with the latest news</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Corridor Amenities:</h3>
+            <ul>
+                <li>A corridor with a table and two chairs, ideal for enjoying your surroundings</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Washroom Amenities:</h3>
+            <ul>
+                <li>A modern wooden washbasin stand</li>
+                <li>A shower cubicle with curtains for privacy</li>
+                <li>Water closet with all essential toiletries</li>
+                <li>Fresh towels provided daily</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Additional Amenities Available on Rent:</h3>
+            <ul>
+                <li>Room heater for added warmth during cooler days</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Exclusive Services:</h3>
+            <ul>
+                <li>Attentive customer service available round-the-clock to cater to your needs</li>
+                <li>Daily housekeeping to maintain the cleanliness and comfort of your space</li>
+                <li>Gourmet dining options, including traditional satvik meals, prepared fresh daily</li>
+                <li>Yoga and meditation sessions to complement your spiritual journey</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Cultural Experience:</h3>
+            <p>Immerse yourself in the vibrant cultural fabric of Kumbh Mela through our curated evening programs. Enjoy mesmerizing classical dance performances, soulful live music, and engaging storytelling that brings the ancient traditions and legends of the Kumbh Mela to life.</p>
+        </section>
+        <section>
+            <p>Book your stay at our Deluxe Camps for Kumbh Mela 2025, and embark on a journey that combines spiritual depth with premium comfort.</p>
+        </section>
+    </div>
+    <div class="container my-5 p-4 shadow-div custom-div">
+        <!-- Feature Tags -->
+        <div class="d-flex flex-wrap mb-4">
+            <span class="badge feature-badge mb-2 mb-sm-0 me-2">Inside Sangam Area</span>
+            <span class="badge feature-badge mb-2 mb-sm-0 me-2">Transports Available</span>
+            <span class="badge feature-badge mb-2 mb-sm-0">1.5Kms from Arail Ghat (Boat Point)</span>
+        </div>
+        
+        <!-- Social Media Icons -->
+        <div class="d-flex mb-4">
+            <a href="#" class="me-2"><i style="color:#25D366" class="fa-brands fa-square-whatsapp social-icon"></i></a>
+            <a href="#" class="me-2"><i style="color:#1877F2" class="fa-brands fa-square-facebook social-icon"></i></a>
+            <a href="#" class="me-2"><i style="color:#e64234" class="fa-solid fa-envelope social-icon"></i></a>
+            <a href="#" class="me-2"><i class="fa-solid fa-print social-icon"></i></a>
+        </div>
+    
+        <!-- Inclusions Section -->
+        <h3 class="mb-3 section-heading">Inclusions</h3>
+        <div class="d-flex flex-wrap mb-4">
+            <span class="badge inclusion-badge mb-2 mb-sm-0 me-3">Attached Washroom</span>
+            <span class="badge inclusion-badge mb-2 mb-sm-0 me-3">Internet</span>
+        </div>
+    
+        <!-- Exclusions Section -->
+        <h3 class="mb-3 section-heading">Exclusions</h3>
+        <div class="d-flex flex-wrap">
+            <span class="badge exclusion-badge mb-2 mb-sm-0 me-4">GST 5%</span>
+            <span class="badge exclusion-badge mb-2 mb-sm-0 me-4">Guide</span>
+            <span class="badge exclusion-badge mb-2 mb-sm-0 me-4">Insurance</span>
+        </div>
+    </div>
+    
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,429 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumbh Mela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <style>
+        /* style.css */
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #080710;
+            position: relative;
+            height: 100vh;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .background {
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            top: 50%;
+        }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(#1845ad, #23a2f6);
+            left: -80px;
+            top: -80px;
+        }
+
+        .shape:last-child {
+            background: linear-gradient(to right, #ff512f, #f09819);
+            right: -30px;
+            bottom: -80px;
+        }
+
+        form {
+            height: 520px;
+            width: 400px;
+            background-color: rgba(255, 255, 255, 0.13);
+            position: absolute;
+            
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+        }
+
+        form * {
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        form h3 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        input {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        ::placeholder {
+            color: #e5e5e5;
+        }
+
+        .lbutton {
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .social {
+            margin-top: 30px;
+            display: flex;
+        }
+
+        .social div {
+            background: red;
+            width: 150px;
+            border-radius: 3px;
+            padding: 5px 10px 10px 5px;
+            background-color: rgba(255, 255, 255, 0.27);
+            color: #eaf0fb;
+            text-align: center;
+        }
+
+        .social div:hover {
+            background-color: rgba(255, 255, 255, 0.47);
+        }
+
+        .social .fb {
+            margin-left: 25px;
+        }
+
+        .social i {
+            margin-right: 4px;
+        }
+
+        .bg-light {
+            background-color: transparent !important;
+        }
+
+        .carousel-item {
+
+            min-height: 300px;
+        }
+
+        .carousel-caption {
+            bottom: 220px;
+        }
+
+        .carousel-caption h5 {
+            font-size: 45px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 25px;
+        }
+
+        .carousel-caption p {
+            width: 60%;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.9;
+        }
+
+        .carousel-caption a {
+            text-transform: uppercase;
+            text-decoration: none;
+            background: darkorange;
+            padding: 10px 30px;
+            display: inline-block;
+            color: #000;
+            margin-top: 15px;
+        }
+
+        .navbar-nav a {
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .navbar-light .navbar-brand {
+            color: #fff;
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .navbar-light .navbar-brand:focus,
+        .navbar-light .navbar-brand:hover {
+            color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #fff;
+        }
+
+        .navbar-light .navbar-nav .nav-link:focus,
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        .w-100 {
+            height: 100vh;
+        }
+
+        .navbar-toggler {
+            padding: 1px 5px;
+            font-size: 18px;
+            line-height: 0.3;
+            background: #fff;
+        }
+
+        /* media.css */
+        @media only screen and (max-width: 767px) {
+            .section1{
+                margin-top:40px;
+            }
+            .navbar-nav {
+                text-align: center;
+                background: rgba(0, 0, 0, 0.5);
+            }
+
+            .carousel-caption {
+                bottom: 165px;
+            }
+
+            .carousel-caption h5 {
+                font-size: 17px;
+            }
+
+            .carousel-caption a {
+                padding: 10px 15px;
+                font-size: 15px;
+            }
+
+        }
+        form {
+            height: auto; /* Adjust height to allow form to grow on smaller screens */
+            width: 100%;
+            max-width: 380px; /* Set a max-width to limit the form on larger screens */
+            background-color: rgba(255, 255, 255, 0.13);
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 30px 20px; /* Reduced padding for smaller screens */
+        }
+        
+        input {
+            display: block;
+            height: 50px;
+            width: 100%; /* Make inputs responsive */
+            background-color: rgba(255, 255, 255, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        
+        .lbutton {
+            margin-top: 30px;
+            width: 100%; /* Ensure button takes full width on smaller screens */
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 767px) {
+            form {
+                padding: 20px 15px; /* Reduce padding on smaller screens */
+            }
+        
+            input, .lbutton {
+                height: 45px; /* Adjust height for better fit on smaller screens */
+                font-size: 16px; /* Adjust font size */
+            }
+        
+            .lbutton {
+                padding: 10px 0; /* Adjust button padding */
+                font-size: 16px;
+            }
+        
+            .social div {
+                width: 100%; /* Make social buttons full-width on smaller screens */
+                margin-bottom: 10px;
+            }
+        }
+        
+    </style>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-light  fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Kumbh Mela</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/index/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/shahisnan/">Shahisnan</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/accommodations/">Accommodations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/tours/">Tours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:8000/accounts/reviews/">Reviews</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="emergencyDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Emergency Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="emergencyDropdown">
+                            <li><a class="dropdown-item" href="http://127.0.0.1:8000/accounts/sos/">SOS</a></li>
+                            <li><a class="dropdown-item" href="{% url 'emergency_announcements' %}">Emergency Announcements</a></li>
+                            <li><a class="dropdown-item" href="http://127.0.0.1:8000/accounts/lost-found/">Lost & Found</a></li>
+                            <li><a class="dropdown-item" href="http://127.0.0.1:8000/accounts/contacts/">Emergency Contacts</a></li>
+                        </ul>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}">
+                        <img src="{% static 'images/user_icon.png' %}" alt="User Profile" style="height: 40px; width: 40px;">
+                    </a>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+
+                        
+                        
+                    {% endif %}
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!-- Background Video -->
+    <video autoplay muted loop class="background-video">
+        <source src="{% static 'videos/v1.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    {% comment %} <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div> {% endcomment %}
+
+    <section class="section1">
+        <div class="container">
+            <form method="POST">
+                <h3>Login</h3>  
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="lbutton" type="submit">Login</button>
+                <a href="{% url 'password_reset' %}">Forgot your password?</a>
+            </form>
+        </div>
+    </section>
+    
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
